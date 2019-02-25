@@ -6,11 +6,13 @@ class DoubanSpiderSpider(scrapy.Spider):
     #爬虫名字
     name = 'douban_spider'
     #允许的域名
-    allowed_domains = ['movie.douban.com']
+    allowed_domains = ['movie.douban.com','kaijiang.zhcw.com']
     #入口url, 扔到调度器里面
     start_urls = ['https://movie.douban.com/top250']
     #默认解析方法
+    # start_urls = ['http://kaijiang.zhcw.com/zhcw/html/ssq/list.html']
     def parse(self, response):
+        # print(response)
         #循环电影的条目
         movie_list = response.xpath("//div[@class='article']//ol[@class='grid_view']/li")
         for i_item in movie_list:
